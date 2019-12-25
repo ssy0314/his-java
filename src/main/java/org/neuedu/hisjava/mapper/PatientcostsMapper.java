@@ -1,6 +1,10 @@
 package org.neuedu.hisjava.mapper;
 
+import org.neuedu.hisjava.model.CountAndSum;
 import org.neuedu.hisjava.model.Patientcosts;
+import org.neuedu.hisjava.model.Register;
+
+import java.util.List;
 
 public interface PatientcostsMapper {
     /**
@@ -50,4 +54,8 @@ public interface PatientcostsMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Patientcosts record);
+
+    List<Patientcosts> getPatientCosts(Register register);
+
+    CountAndSum getCount(Register register);
 }

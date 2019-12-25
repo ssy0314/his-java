@@ -241,4 +241,39 @@
       BackID = #{backid,jdbcType=INTEGER}
     where ID = #{id,jdbcType=INTEGER}
   </update>
+
+
+  <resultMap id="getPatientCosts" type="org.neuedu.hisjava.model.Patientcosts">
+     <id column="id" property="id"></id>
+     <result column="name" property="name"></result>
+     <result column="price" property="price"></result>
+     <result column="amount" property="amount"></result>
+     <result column="createTime" property="createtime"></result>
+    <association property="register" javaType="org.neuedu.hisjava.model.Register">
+      <id column="registid" property="id"></id>
+      <result column="casenumber" property="casenumber"></result>
+      <result column="realname" property="realname"></result>
+      <result column="idnumber" property="idnumber"></result>
+      <result column="homeaddress" property="homeaddress"></result>
+      <result column="starttime" property="starttime"></result>
+      <result column="endtime" property="endtime"></result>
+    </association>
+  </resultMap>
+  <select id="getPatientCosts" resultMap="getPatientCosts">
+    select idnumber,homeaddress,casenumber,realname,p.name,price,amount,createtime
+    from patientcosts p
+    join register r
+    on p.registid=r.id
+    where casenumber=#{casenumber}
+    and createtime between #{starttime} and #{endtime}
+  </select>
+
+  <select id="getCount" resultType="org.neuedu.hisjava.model.CountAndSum">
+    select count(*) as count,SUM(price*amount) as sum
+    from patientcosts p
+    join register r
+    on p.registid=r.id
+    where casenumber=#{casenumber}
+    and createtime between #{starttime} and #{endtime}
+  </select>
 </mapper>

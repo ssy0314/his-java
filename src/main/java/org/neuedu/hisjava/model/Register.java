@@ -1,9 +1,38 @@
 package org.neuedu.hisjava.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class Register implements Serializable {
+    private String starttime;
+    private String endtime;
+    private Department department;
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public String getStarttime() {
+        return starttime;
+    }
+
+    public void setStarttime(String starttime) {
+        this.starttime = starttime;
+    }
+
+    public String getEndtime() {
+        return endtime;
+    }
+
+    public void setEndtime(String endtime) {
+        this.endtime = endtime;
+    }
 
     private Integer id;
 
@@ -11,10 +40,12 @@ public class Register implements Serializable {
     private String realname;
     private Integer gender;
     private String idnumber;
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss",timezone = "Asia/Shanghai")
     private Date birthdate;
     private Integer age;
     private String agetype;
     private String homeaddress;
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss",timezone = "Asia/Shanghai")
     private Date visitdate;
     private String noon;
     private Integer deptid;
@@ -22,6 +53,7 @@ public class Register implements Serializable {
     private Integer registleid;
     private Integer settleid;
     private Boolean isbook;
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private Date registtime;
     private Integer registerid;
     private Integer visitstate;

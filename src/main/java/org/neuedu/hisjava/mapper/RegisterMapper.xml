@@ -319,6 +319,22 @@
     ORDER BY CASENUMBER DESC
     LIMIT 0,1
   </select>
+<resultMap id="RegisterMap" type="org.neuedu.hisjava.model.Register" autoMapping="true">
+  <id column="id" property="id"></id>
+  <association property="department" javaType="org.neuedu.hisjava.model.Department">
+    <id column="id" property="id"></id>
+    <result column="deptname" property="deptname"></result>
+  </association>
+</resultMap>
+
+
+  <select id="searchAllRegister" resultMap="RegisterMap">
+    SELECT r.*,d.id,deptname
+    FROM Register r
+    join department d
+    on r.deptid=d.id
+    WHERE casenumber=#{casenumber}
+  </select>
 
 
   <select id="searchInvoice" resultType="org.neuedu.hisjava.model.Invoice">
@@ -326,5 +342,10 @@
     FROM Invoice
     ORDER BY InvoiceNUM DESC
     LIMIT 0,1
+  </select>
+  <select id="searchPatientInfo" resultType="org.neuedu.hisjava.model.Register">
+     select RealName,HomeAddress,IDnumber
+     from register
+     where casenumber=#{casenumber}
   </select>
 </mapper>

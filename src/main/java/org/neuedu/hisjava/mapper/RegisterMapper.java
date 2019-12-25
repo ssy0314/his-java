@@ -66,4 +66,8 @@ public interface RegisterMapper {
 
     Invoice searchInvoice();
 
+    Register searchPatientInfo(Register register);
+
+    List<Register> searchAllRegister(String casenumber);
+
 }
