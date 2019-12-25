@@ -208,7 +208,7 @@
   </update>
 
 
-  <resultMap id="FmeditemMap" type="org.neuedu.hisjava.model.Department">
+  <resultMap id="FmeditemMap" type="org.neuedu.hisjava.model.Fmeditem">
     <id column="id" property="id"></id>
     <result column="itemcode" property="itemcode"></result>
     <result column="itemname" property="itemname"></result>

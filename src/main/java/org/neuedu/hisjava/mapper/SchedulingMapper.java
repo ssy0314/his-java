@@ -55,4 +55,6 @@ public interface SchedulingMapper {
     int updateByPrimaryKey(Scheduling record);
 
     List<Scheduling> searchScheduing(@Param("startDate") String startDate,@Param("endDate") String endDate);
+
+    List<Scheduling> searchSpecilScheduing(String deptid,String registlevelid,String noon,String nowdate);
 }

@@ -162,4 +162,13 @@
       </if>
     </where>
   </select>
+
+
+  <select id="searchSpecilScheduing" resultType="org.neuedu.hisjava.model.Scheduling">
+    select *
+    from scheduling s
+    join user u
+    on s.userid = u.id
+    where scheddate = #{nowdate} and noon=#{noon} and registleid=#{registlevelid} and s.deptid=#{deptid}
+  </select>
 </mapper>

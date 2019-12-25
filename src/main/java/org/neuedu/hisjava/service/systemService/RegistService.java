@@ -17,6 +17,9 @@ public class RegistService {
     public List<Registlevel> registService() {
       return registlevelMapper.registService();
     }
+    public Registlevel registOneService(String id) {
+      return registlevelMapper.registOneService(id);
+    }
 
     public PageInfo searchRegistByRegistnameOrRegistcode(String keywords, Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum,pageSize);

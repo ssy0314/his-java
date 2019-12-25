@@ -60,4 +60,6 @@ public interface RegistlevelMapper {
     List<Registlevel> searchRegistByRegistnameOrRegistcode(String keywords);
 
     int delRegist(Integer id);
+
+    Registlevel registOneService(String id);
 }

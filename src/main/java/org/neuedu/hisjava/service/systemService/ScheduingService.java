@@ -26,4 +26,8 @@ public class ScheduingService {
 
 
     }
+
+    public List<Scheduling> searchSpecilScheduing(String deptid, String registlevelid, String noon, String nowdate) {
+        return schedulingMapper.searchSpecilScheduing(deptid,registlevelid,noon,nowdate);
+    }
 }

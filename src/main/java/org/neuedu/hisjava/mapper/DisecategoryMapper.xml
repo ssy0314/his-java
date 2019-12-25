@@ -163,7 +163,7 @@
     select *
     from Disecategory
     <where>
-      f.delmark = 1
+      delmark = 1
       <if test="keywords!=null and keywords!=''">
         and  dicacode like CONCAT('%',#{keywords},'%') or dicaname like CONCAT('%',#{keywords},'%')
       </if>

@@ -1,6 +1,11 @@
 package org.neuedu.hisjava.mapper;
 
+import org.neuedu.hisjava.model.Constantitem;
+import org.neuedu.hisjava.model.Invoice;
 import org.neuedu.hisjava.model.Register;
+import org.neuedu.hisjava.model.Settlecategory;
+
+import java.util.List;
 
 public interface RegisterMapper {
     /**
@@ -50,4 +55,15 @@ public interface RegisterMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Register record);
+
+    List<Constantitem> searchGender();
+
+    List<Constantitem> searchCharge();
+
+    List<Settlecategory> searchSettle();
+
+    Register searchRegister();
+
+    Invoice searchInvoice();
+
 }

@@ -17,6 +17,10 @@ public class RegistController {
     public List<Registlevel> searchRegistlevel(){
         return registService.registService();
     }
+    @GetMapping("/searchOneRegistlevel")
+    public Registlevel searchOneRegistlevel(String id){
+        return registService.registOneService(id);
+    }
 
 
     // 根据挂号级别编码或名称查询

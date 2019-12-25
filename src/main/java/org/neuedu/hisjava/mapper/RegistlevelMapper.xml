@@ -184,4 +184,10 @@
     set delmark = 0
     where id =#{id}
   </update>
+
+  <select id="registOneService" resultType="org.neuedu.hisjava.model.Registlevel">
+    select *
+    from registlevel
+    where id=#{id}
+  </select>
 </mapper>
