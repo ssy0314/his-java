@@ -25,7 +25,15 @@ public class Register implements Serializable {
     private Date registtime;
     private Integer registerid;
     private Integer visitstate;
+    private Invoice invoice;
 
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
 
     private static final long serialVersionUID = 1L;
     public Integer getId() {
