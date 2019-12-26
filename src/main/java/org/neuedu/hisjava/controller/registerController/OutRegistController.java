@@ -2,9 +2,11 @@ package org.neuedu.hisjava.controller.registerController;
 
 
 import org.neuedu.hisjava.model.Register;
+import org.neuedu.hisjava.model.RespBean;
 import org.neuedu.hisjava.service.registerService.OutRegistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -16,5 +18,9 @@ public class OutRegistController {
     @GetMapping("/searchAllRegister")
     public List<Register> searchAllRegister(String casenumber){
         return outRegistService.searchAllRegister(casenumber);
+    }
+    @PutMapping("/updateVisitstate")
+    public RespBean updateVisitstate(String id){
+        return outRegistService.updateVisitstate(id);
     }
 }

@@ -70,4 +70,9 @@ public interface RegisterMapper {
 
     List<Register> searchAllRegister(String casenumber);
 
+    int updateVisitstate(String id);
+
+    Register searchOneRegisterByCasenumber(String casenumber);
+
+    List<Register> searchRegisterByasenumber(String casenumber);
 }

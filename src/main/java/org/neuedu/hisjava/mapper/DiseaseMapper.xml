@@ -177,7 +177,7 @@
     join disecategory dc
     on d.disecategoryid=dc.id
     <where>
-      f.delmark = 1
+      d.delmark = 1
       <if test="keywords!=null and keywords!=''">
         and  diseasecode like CONCAT('%',#{keywords},'%') or diseasename like CONCAT('%',#{keywords},'%')
       </if>

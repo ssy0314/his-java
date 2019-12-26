@@ -30,6 +30,10 @@ public class RegisterController {
     public Register searchRegister(){
         return registService.searchRegister();
     }
+    @GetMapping("/searchOneRegisterByCasenumber")
+    public Register searchOneRegisterByCasenumber(String casenumber){
+        return registService.searchOneRegisterByCasenumber(casenumber);
+    }
     @GetMapping("/searchInvoice")
     public Invoice searchInvoice(){
         return registService.searchInvoice();

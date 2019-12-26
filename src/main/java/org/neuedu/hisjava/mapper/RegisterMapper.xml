@@ -319,6 +319,27 @@
     ORDER BY CASENUMBER DESC
     LIMIT 0,1
   </select>
+
+
+  <select id="searchOneRegisterByCasenumber" resultType="org.neuedu.hisjava.model.Register">
+    SELECT *,COUNT(*) as counts
+    FROM Register
+	WHERE Casenumber=#{casenumber}
+    ORDER BY CASENUMBER DESC
+    LIMIT 0,1
+  </select>
+
+
+  <select id="searchRegisterByasenumber" resultType="org.neuedu.hisjava.model.Register">
+    SELECT r.*,f.itemname,f.price,c.state,c.creationtime,c.num
+    FROM Register r
+    join checkapply c
+    on r.id = c.RegistID
+    join fmeditem f
+    on f.id = c.ItemID
+	WHERE Casenumber=#{casenumber} and state = 2
+  </select>
+
 <resultMap id="RegisterMap" type="org.neuedu.hisjava.model.Register" autoMapping="true">
   <id column="id" property="id"></id>
   <association property="department" javaType="org.neuedu.hisjava.model.Department">
@@ -348,4 +369,11 @@
      from register
      where casenumber=#{casenumber}
   </select>
+
+
+  <update id="updateVisitstate">
+    update register
+    set Visitstate=4
+    where id=#{id}
+  </update>
 </mapper>

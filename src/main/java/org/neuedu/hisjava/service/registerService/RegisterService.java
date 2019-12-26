@@ -49,4 +49,8 @@ public class RegisterService {
         }
 
     }
+
+    public Register searchOneRegisterByCasenumber(String casenumber) {
+        return registerMapper.searchOneRegisterByCasenumber(casenumber);
+    }
 }

@@ -3,6 +3,7 @@ package org.neuedu.hisjava.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Register implements Serializable {
@@ -40,12 +41,12 @@ public class Register implements Serializable {
     private String realname;
     private Integer gender;
     private String idnumber;
-    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss",timezone = "Asia/Shanghai")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private Date birthdate;
     private Integer age;
     private String agetype;
     private String homeaddress;
-    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss",timezone = "Asia/Shanghai")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private Date visitdate;
     private String noon;
     private Integer deptid;
@@ -53,11 +54,68 @@ public class Register implements Serializable {
     private Integer registleid;
     private Integer settleid;
     private Boolean isbook;
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss",timezone = "Asia/Shanghai")
     private Date registtime;
     private Integer registerid;
     private Integer visitstate;
     private Invoice invoice;
+    private Integer counts;
+
+    //收费部分
+    private String itemname;
+    private BigDecimal price;
+    private Integer num;
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss",timezone = "Asia/Shanghai")
+    private Date creationtime;
+    private Integer state;
+
+    public String getItemname() {
+        return itemname;
+    }
+
+    public void setItemname(String itemname) {
+        this.itemname = itemname;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
+    }
+
+    public Date getCreationtime() {
+        return creationtime;
+    }
+
+    public void setCreationtime(Date creationtime) {
+        this.creationtime = creationtime;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
+    public Integer getCounts() {
+        return counts;
+    }
+
+    public void setCounts(Integer counts) {
+        this.counts = counts;
+    }
 
     public Invoice getInvoice() {
         return invoice;
