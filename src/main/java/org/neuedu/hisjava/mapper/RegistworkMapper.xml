@@ -111,4 +111,11 @@
       EndTime = #{endtime,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="searchBeforeEndTime" resultType="org.neuedu.hisjava.model.Registwork">
+    select *
+    from registwork
+    order by endtime DESC
+    limit 0,1
+  </select>
 </mapper>

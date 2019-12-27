@@ -328,10 +328,31 @@
     ORDER BY CASENUMBER DESC
     LIMIT 0,1
   </select>
+<resultMap id="RegisterPayMap" type="org.neuedu.hisjava.model.Register" autoMapping="true">
+  <id column="id" property="id"></id>
+  <collection property="lists" ofType="org.neuedu.hisjava.model.CheckApply">
+    <id column="cid" property="id"></id>
+    <result column="state" property="state"></result>
+    <result column="creationtime" property="creationtime"></result>
+    <result column="num" property="num"></result>
+    <association property="fmeditem" javaType="org.neuedu.hisjava.model.Fmeditem">
+      <id column="fid" property="id"></id>
+      <result column="itemname" property="itemname"></result>
+      <result column="price" property="price"></result>
+    </association>
+    <association property="register" javaType="org.neuedu.hisjava.model.Register">
+      <id column="id" property="id"></id>
+      <result column="realname" property="realname"></result>
+      <result column="homeaddress" property="homeaddress"></result>
+      <result column="idnumber" property="idnumber"></result>
+      <result column="casenumber" property="casenumber"></result>
+    </association>
+  </collection>
+</resultMap>
 
-
-  <select id="searchRegisterByasenumber" resultType="org.neuedu.hisjava.model.Register">
-    SELECT r.*,f.itemname,f.price,c.state,c.creationtime,c.num
+  <!--  搜索已开立信息-->
+  <select id="searchRegisterByasenumber" resultMap="RegisterPayMap">
+    SELECT r.*,f.id as fid,f.itemname,f.price,c.state,c.creationtime,c.num,c.id as cid
     FROM Register r
     join checkapply c
     on r.id = c.RegistID
@@ -339,6 +360,46 @@
     on f.id = c.ItemID
 	WHERE Casenumber=#{casenumber} and state = 2
   </select>
+
+
+<!--  搜索已交费信息-->
+  <select id="searchRegisterRefundByasenumber" resultMap="RegisterPayMap">
+    SELECT r.*,f.id as fid,f.itemname,f.price,c.state,c.creationtime,c.num,c.id as cid
+    FROM Register r
+    join checkapply c
+    on r.id = c.RegistID
+    join fmeditem f
+    on f.id = c.ItemID
+	WHERE Casenumber=#{casenumber} and state = 3
+  </select>
+
+
+  <resultMap id="RegisterInvoiceMap" type="org.neuedu.hisjava.model.Register" autoMapping="true">
+    <id column="id" property="id"></id>
+    <collection property="invoices" ofType="org.neuedu.hisjava.model.Invoice">
+      <id column="iid" property="id"></id>
+      <result column="money" property="money"></result>
+      <result column="state" property="state"></result>
+      <result column="invoicenum" property="invoicenum"></result>
+      <association property="register" javaType="org.neuedu.hisjava.model.Register">
+        <id column="id" property="id"></id>
+        <result column="realname" property="realname"></result>
+        <result column="homeaddress" property="homeaddress"></result>
+        <result column="idnumber" property="idnumber"></result>
+        <result column="casenumber" property="casenumber"></result>
+        <result column="visitdate" property="visitdate"></result>
+
+      </association>
+    </collection>
+  </resultMap>
+  <select id="searchInvoiceInformation" resultMap="RegisterInvoiceMap">
+    SELECT r.*,i.id as iid,i.money,i.state,i.invoicenum
+    FROM Register r
+    join invoice i
+    on r.id=i.registid
+	WHERE Casenumber=#{casenumber} and state = 3
+  </select>
+
 
 <resultMap id="RegisterMap" type="org.neuedu.hisjava.model.Register" autoMapping="true">
   <id column="id" property="id"></id>

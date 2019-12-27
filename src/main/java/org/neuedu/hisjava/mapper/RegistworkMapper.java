@@ -1,5 +1,6 @@
 package org.neuedu.hisjava.mapper;
 
+import org.neuedu.hisjava.model.Invoice;
 import org.neuedu.hisjava.model.Registwork;
 
 public interface RegistworkMapper {
@@ -50,4 +51,7 @@ public interface RegistworkMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Registwork record);
+
+    Registwork searchBeforeEndTime();
+
 }

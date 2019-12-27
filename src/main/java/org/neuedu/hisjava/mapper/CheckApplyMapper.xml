@@ -276,4 +276,29 @@
       RecordType = #{recordtype,jdbcType=INTEGER}
     where ID = #{id,jdbcType=INTEGER}
   </update>
+
+<!--交费-->
+  <update id="updateState">
+    update checkapply
+    set state = 3
+    <where>
+    id in
+      <foreach collection="array" separator="," close=")" open="(" item="id">
+        #{id}
+      </foreach>
+    </where>
+  </update>
+
+
+<!--退费-->
+  <update id="updateRefundState">
+    update checkapply
+    set state = 6
+    <where>
+      id in
+      <foreach collection="array" separator="," close=")" open="(" item="id">
+        #{id}
+      </foreach>
+    </where>
+  </update>
 </mapper>

@@ -1,5 +1,7 @@
 package org.neuedu.hisjava.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,6 +16,7 @@ public class CheckApply implements Serializable {
     private String position;
     private Integer isurgent;
     private Integer num;
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss",timezone = "Asia/Shanghai")
     private Date creationtime;
     private Integer doctorid;
     private Integer checkoperid;
@@ -23,6 +26,26 @@ public class CheckApply implements Serializable {
     private Date resulttime;
     private Integer state;
     private Integer recordtype;
+
+    private Fmeditem fmeditem;
+    private Register register;
+
+    public Register getRegister() {
+        return register;
+    }
+
+    public void setRegister(Register register) {
+        this.register = register;
+    }
+
+    public Fmeditem getFmeditem() {
+        return fmeditem;
+    }
+
+    public void setFmeditem(Fmeditem fmeditem) {
+        this.fmeditem = fmeditem;
+    }
+
     private static final long serialVersionUID = 1L;
     public Integer getId() {
         return id;

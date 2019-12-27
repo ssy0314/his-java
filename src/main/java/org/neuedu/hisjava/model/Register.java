@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 public class Register implements Serializable {
     private String starttime;
@@ -59,54 +60,26 @@ public class Register implements Serializable {
     private Integer registerid;
     private Integer visitstate;
     private Invoice invoice;
+    private List<Invoice> invoices;
     private Integer counts;
 
     //收费部分
-    private String itemname;
-    private BigDecimal price;
-    private Integer num;
-    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss",timezone = "Asia/Shanghai")
-    private Date creationtime;
-    private Integer state;
+    private List<CheckApply> lists;
 
-    public String getItemname() {
-        return itemname;
+    public List<Invoice> getInvoices() {
+        return invoices;
     }
 
-    public void setItemname(String itemname) {
-        this.itemname = itemname;
+    public void setInvoices(List<Invoice> invoices) {
+        this.invoices = invoices;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public List<CheckApply> getLists() {
+        return lists;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public Integer getNum() {
-        return num;
-    }
-
-    public void setNum(Integer num) {
-        this.num = num;
-    }
-
-    public Date getCreationtime() {
-        return creationtime;
-    }
-
-    public void setCreationtime(Date creationtime) {
-        this.creationtime = creationtime;
-    }
-
-    public Integer getState() {
-        return state;
-    }
-
-    public void setState(Integer state) {
-        this.state = state;
+    public void setLists(List<CheckApply> lists) {
+        this.lists = lists;
     }
 
     public Integer getCounts() {

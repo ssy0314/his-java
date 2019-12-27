@@ -181,4 +181,59 @@
       DailyState = #{dailystate,jdbcType=INTEGER}
     where ID = #{id,jdbcType=INTEGER}
   </update>
+
+  <update id="updateFlogHeavily">
+    update invoice
+    set state=5
+    where id=#{id}
+  </update>
+
+  <update id="updateRepBill">
+    update invoice
+    set state=6
+    where id=#{id}
+  </update>
+
+<!--//根据日结起始时间查询发票开始号-->
+  <select id="searchBeginInvoiceNum" resultType="org.neuedu.hisjava.model.Invoice">
+    select InvoiceNum
+    from Invoice
+    where CreationTime between #{beginTime} and #{endTime}
+    order by InvoiceNum
+    limit 0,1
+  </select>
+<!-- 根据日结起始时间查询发票结束号-->
+  <select id="searchEndInvoiceNum" resultType="org.neuedu.hisjava.model.Invoice">
+    select InvoiceNum
+    from Invoice
+    where CreationTime between #{beginTime} and #{endTime}
+    order by InvoiceNum desc
+    limit 0,1
+  </select>
+
+<!--根据日结起始时间查询作废发票-->
+  <select id="searchBad" resultType="org.neuedu.hisjava.model.Invoice">
+    select InvoiceNum
+    from Invoice
+    where CreationTime between #{beginTime} and #{endTime}  and state=2
+  </select>
+<!--根据日结起始时间查询重打发票-->
+  <select id="searchRepeat" resultType="org.neuedu.hisjava.model.Invoice">
+    select InvoiceNum
+    from Invoice
+    where CreationTime between #{beginTime} and #{endTime}  and state=5
+  </select>
+<!--根据日结起始时间查询现金金额-->
+  <select id="searchCash" resultType="org.neuedu.hisjava.model.Invoice">
+    select sum(money) as sum
+    from Invoice
+    where CreationTime between #{beginTime} and #{endTime} and FeeType=51
+  </select>
+<!--根据日结起始时间查询非现金金额-->
+  <select id="searchOther" resultType="org.neuedu.hisjava.model.Invoice">
+    select sum(money) as sum
+    from Invoice
+    where CreationTime between #{beginTime} and #{endTime} and FeeType!=51
+
+  </select>
 </mapper>

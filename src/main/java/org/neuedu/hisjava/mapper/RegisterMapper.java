@@ -75,4 +75,9 @@ public interface RegisterMapper {
     Register searchOneRegisterByCasenumber(String casenumber);
 
     List<Register> searchRegisterByasenumber(String casenumber);
+
+    List<Register> searchRegisterRefundByasenumber(String casenumber);
+
+    List<Register> searchInvoiceInformation(String casenumber);
+
 }
