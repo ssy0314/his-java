@@ -49,9 +49,16 @@ public class RegistWorkService {
     public RespBean addRegistWork(Registwork registwork) {
         int i = registworkMapper.insertSelective(registwork);
         if(i!=0){
-            return RespBean.ok(200,"新增日结成功");
+            int j = invoiceMapper.updateInvoiceDailyState(registwork.getStarttime(),registwork.getEndtime());
+            if(j!=0){
+                return RespBean.ok(200,"日结成功");
+
+            }else{
+                return RespBean.ok(200,"日结失败");
+            }
+
         }else{
-            return RespBean.ok(200,"新增日结失败");
+            return RespBean.ok(200,"日结失败");
         }
     }
 }

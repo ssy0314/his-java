@@ -2,6 +2,7 @@ package org.neuedu.hisjava.mapper;
 
 import org.neuedu.hisjava.model.Invoice;
 
+import java.util.Date;
 import java.util.List;
 
 public interface InvoiceMapper {
@@ -69,4 +70,8 @@ public interface InvoiceMapper {
     Invoice searchCash(String beginTime, String endTime);
 
     Invoice searchOther(String beginTime, String endTime);
+
+    int updateInvoiceDailyState(Date starttime, Date endtime);
+
+    List<Invoice> searchOwnRegistworkInvoice(String startTime, String endTime);
 }

@@ -236,4 +236,32 @@
     where CreationTime between #{beginTime} and #{endTime} and FeeType!=51
 
   </select>
+
+
+<!-- 根据日结起始时间更改发票日结状态 -->
+  <update id="">
+    UPDATE invoice
+    set dailystate =1
+    where CreationTime between #{starttime} and #{endtime}
+  </update>
+
+<!--  -->
+  <resultMap id="Map" type="org.neuedu.hisjava.model.Invoice">
+    <result column="InvoiceNum" property="invoicenum"></result>
+    <result column="money" property="money"></result>
+    <result column="state" property="state"></result>
+    <result column="FeeType" property="feetype"></result>
+    <association property="register" javaType="org.neuedu.hisjava.model.Register">
+      <result column="CaseNumber" property="casenumber"></result>
+      <result column="realname" property="realname"></result>
+      <result column="SettleID" property="settleid"></result>
+    </association>
+  </resultMap>
+  <select id="searchOwnRegistworkInvoice" resultMap="Map">
+    Select InvoiceNum,money,state,CaseNumber,realname,SettleID,FeeType
+    From register r
+    Join Invoice i
+    On r.id = i.RegistID
+    where CreationTime between #{startTime} and #{endTime}
+  </select>
 </mapper>

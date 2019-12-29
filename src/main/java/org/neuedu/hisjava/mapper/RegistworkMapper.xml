@@ -118,4 +118,12 @@
     order by endtime DESC
     limit 0,1
   </select>
+
+  <select id="searchAllRegistwork" resultType="org.neuedu.hisjava.model.Registwork">
+    select r.*,RealName
+    from registwork r
+    join user u
+    on u.id = r.RegisterID
+    where EndTime between #{startTime} and #{endTime}
+  </select>
 </mapper>
